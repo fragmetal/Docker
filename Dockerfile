@@ -12,7 +12,6 @@ RUN apt update && \
     mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo 'root:Sadri@123' | chpasswd && \
-    source ~/.bashrc && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     
 ENV PATH="/usr/local/lib/nodejs/bin:${PATH}"
