@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM ubuntu:latest
 
 # Install necessary packages
 RUN apt update && \
@@ -8,9 +8,11 @@ RUN apt update && \
     mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo 'root:Sadri@123' | chpasswd && \
+    echo "export PATH=/usr/local/lib/nodejs/bin:\$PATH" >> ~/.bashrc && \
+    bash -c "source ~/.bashrc" && \
+    curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb && \
+    cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ik1ESXdZV1JsWW1ZdE5qTTBZeTAwTldRNExXRmhObUV0WlRrM1lqVmtNV0ZrWVdGaiJ9 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-    
-ENV PATH="/usr/local/lib/nodejs/bin:${PATH}"
 
 # Expose the SSH port
 EXPOSE 4200
