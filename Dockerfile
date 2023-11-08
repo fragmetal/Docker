@@ -44,5 +44,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Expose the SSH port
 EXPOSE 4200
 
-# Start shellinabox
-CMD ["/usr/bin/shellinaboxd", "-t", "-s", "/:LOGIN"]
+# Start shellinabox and install Cloudflare service
+CMD /usr/bin/shellinaboxd -t -s /:LOGIN && \
+    cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ik4yVXdaREl5TkRRdFpXUmpOaTAwWTJZeExUaGpaREV0TURVM05EbG1ZekJpTnpkbCJ9
+
