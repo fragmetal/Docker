@@ -2,13 +2,14 @@ FROM debian:latest
 
 # Install necessary packages
 RUN apt-get update && \
-    apt install -y systemd nano software-properties-common curl lsb-release wget git htop neofetch && \
-    curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64.tar.gz && \
+    apt install -y systemd software-properties-common lsb-release nano curl git htop neofetch && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64.tar.gz && \
     tar -xvf node-v18.18.2-linux-x64.tar.gz && \
-    mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
-    echo "export PATH=/usr/local/lib/nodejs/bin:\$PATH" >> ~/.bashrc && \
-    echo "alias python=python3" >> ~/.bashrc && \
-    source ~/.bashrc
+    mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs
+
+ENV PATH="/usr/local/lib/nodejs/bin:${PATH}"
 
 # Install necessary packages
 RUN apt update && \
