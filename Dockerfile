@@ -28,9 +28,6 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3.11 get-pip.py
 
-# Create a virtual environment
-RUN bash -c "python3.11 -m venv venv"
-
 # Install Cloudflare service
 RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb
 
