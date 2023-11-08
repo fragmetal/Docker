@@ -10,7 +10,7 @@ RUN apt update && \
     curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64.tar.gz && \
     tar -xvf node-v18.18.2-linux-x64.tar.gz && \
     mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
-    echo "alias python=python3" >> /.bashrc && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
     echo 'root:Sadri@123' | chpasswd && \
     source ~/.bashrc && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
