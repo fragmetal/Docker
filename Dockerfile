@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt install -y systemd nano software-properties-common curl lsb-release wget git htop neofetch && \
     curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64.tar.gz && \
     tar -xvf node-v18.18.2-linux-x64.tar.gz && \
-    sudo mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
+    mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
     echo "export PATH=/usr/local/lib/nodejs/bin:\$PATH" >> ~/.bashrc && \
     echo "alias python=python3" >> ~/.bashrc && \
     source ~/.bashrc
