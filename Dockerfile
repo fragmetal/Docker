@@ -6,6 +6,7 @@ RUN apt update && \
     curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64.tar.gz && \
     tar -xvf node-v18.18.2-linux-x64.tar.gz && \
     mv node-v18.18.2-linux-x64 /usr/local/lib/nodejs && \
+    apt update && apt upgrade -y && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     echo 'root:Sadri@123' | chpasswd && \
     echo "export PATH=/usr/local/lib/nodejs/bin:\$PATH" >> ~/.bashrc && \
