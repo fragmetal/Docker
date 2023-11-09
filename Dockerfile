@@ -6,11 +6,8 @@ ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 # Install necessary packages
 RUN apt update && \
-    apt install -y systemd systemctl software-properties-common lsb-release nano tar curl git htop neofetch shellinabox && \
-    curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | bash && \
-    apt-get install pufferpanel && \
-    systemctl enable pufferpanel
-
+    apt install -y systemd systemctl software-properties-common lsb-release nano tar curl git htop neofetch shellinabox 
+    
 # Automatically configure the timezone (based on VPS location)
 RUN echo "tzdata tzdata/Areas select Etc" | debconf-set-selections && \
     echo "tzdata tzdata/Zones/Etc select UTC" | debconf-set-selections && \
