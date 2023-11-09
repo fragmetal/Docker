@@ -7,7 +7,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN=true
 # Install necessary packages
 RUN apt update && \
     apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox && \
-    curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash && \
+    curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | bash && \
     apt-get install pufferpanel && \
     systemctl enable pufferpanel
 
