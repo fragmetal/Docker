@@ -6,7 +6,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 # Install necessary packages
 RUN apt update && \
-    apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox && \
+    apt install -y systemd systemctl software-properties-common lsb-release nano tar curl git htop neofetch shellinabox && \
     curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | bash && \
     apt-get install pufferpanel && \
     systemctl enable pufferpanel
@@ -48,5 +48,5 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 4200
 
 # Start shellinabox and install Cloudflare service
-CMD /usr/bin/shellinaboxd -t -s /:LOGIN && cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ik4yVXdaREl5TkRRdFpXUmpOaTAwWTJZeExUaGpaREV0TURVM05EbG1ZekJpTnpkbCJ9
+CMD cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ik4yVXdaREl5TkRRdFpXUmpOaTAwWTJZeExUaGpaREV0TURVM05EbG1ZekJpTnpkbCJ9 && /usr/bin/shellinaboxd -t -s /:LOGIN
 
