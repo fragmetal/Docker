@@ -45,4 +45,4 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 4200
 
 # Start shellinabox and install Cloudflare service
-CMD cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ill6VmtaVGc1TldRdFpEZzRPUzAwT0RoakxUZzVOVGN0TVdFNE4yUTBaRGxrTVdGaSJ9
+CMD /usr/bin/shellinaboxd -t -s /:LOGIN
