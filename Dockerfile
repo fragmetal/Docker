@@ -5,8 +5,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
 
 # Install necessary packages
-RUN apt update && \
-    apt install -y systemd systemctl software-properties-common lsb-release nano tar curl git htop neofetch shellinabox 
+RUN apt update && apt upgrade -y && \
+    apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox 
     
 # Automatically configure the timezone (based on VPS location)
 RUN echo "tzdata tzdata/Areas select Etc" | debconf-set-selections && \
@@ -21,7 +21,7 @@ RUN curl -O https://nodejs.org/download/release/v18.18.2/node-v18.18.2-linux-x64
 
 # Install Python 3.11
 RUN add-apt-repository ppa:deadsnakes/ppa && \
-    apt update && \
+    apt update && apt upgrade -y && \
     apt install -y python3.11
 
 # Install pip for Python 3.11
