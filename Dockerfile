@@ -36,8 +36,7 @@ RUN ln -s /usr/bin/python3.11 /usr/bin/python && \
     bash -c "source ~/.bashrc"
     
 # Install Cloudflare service
-RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb && \
-    cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ill6VmtaVGc1TldRdFpEZzRPUzAwT0RoakxUZzVOVGN0TVdFNE4yUTBaRGxrTVdGaSJ9
+RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb
     
 # Clean up
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -46,5 +45,4 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 4200
 
 # Start shellinabox and install Cloudflare service
-CMD /usr/bin/shellinaboxd -t -s /:LOGIN
-
+CMD cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ill6VmtaVGc1TldRdFpEZzRPUzAwT0RoakxUZzVOVGN0TVdFNE4yUTBaRGxrTVdGaSJ9 & /usr/bin/shellinaboxd -t -s /:LOGIN &
