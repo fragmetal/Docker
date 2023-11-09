@@ -28,17 +28,17 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python3.11 get-pip.py
 
-# Install Cloudflare service
-RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb && \
-    cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ik4yVXdaREl5TkRRdFpXUmpOaTAwWTJZeExUaGpaREV0TURVM05EbG1ZekJpTnpkbCJ9
-
 # Set up some configurations
 RUN ln -s /usr/bin/python3.11 /usr/bin/python && \
     echo 'root:Sadri@123' | chpasswd && \
     echo "alias ll='ls -l'" > /etc/profile.d/ll.sh && \
     echo "export PATH=/usr/local/lib/nodejs/bin:\$PATH" >> ~/.bashrc && \
     bash -c "source ~/.bashrc"
-
+    
+# Install Cloudflare service
+RUN curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb && dpkg -i cloudflared.deb && \
+    cloudflared service install eyJhIjoiN2Q4ZGI3YTgzODU5MjQxZDdmMDI4ZmM2MjhkOTcxNmMiLCJ0IjoiMmYzMWQ2NTItN2IwNS00Mzc1LTliYzEtYmI4OGNiYmY1MjU4IiwicyI6Ill6VmtaVGc1TldRdFpEZzRPUzAwT0RoakxUZzVOVGN0TVdFNE4yUTBaRGxrTVdGaSJ9
+    
 # Clean up
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
