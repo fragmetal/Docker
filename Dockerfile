@@ -7,11 +7,9 @@ ENV DEBCONF_NONINTERACTIVE_SEEN=true
 # Install necessary packages
 RUN apt update && \
     apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox && \
-    mkdir -p /var/lib/pufferpanel && \
-    docker volume create pufferpanel-config && \
-    docker create --name pufferpanel -p 8080:8080 -p 5657:5657 -v pufferpanel-config:/etc/pufferpanel -v /var/lib/pufferpanel:/var/lib/pufferpanel -v /var/run/docker.sock:/var/run/docker.sock --restart=on-failure pufferpanel/pufferpanel:latest && \
-    docker start pufferpanel && \
-    docker exec -it pufferpanel /pufferpanel/pufferpanel user add
+    curl -s https://packagecloud.io/install/repositories/pufferpanel/pufferpanel/script.deb.sh | sudo bash && \
+    apt-get install pufferpanel && \
+    systemctl enable pufferpanel
 
 # Automatically configure the timezone (based on VPS location)
 RUN echo "tzdata tzdata/Areas select Etc" | debconf-set-selections && \
