@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 # Install necessary packages
 RUN apt update && apt upgrade -y && \
-    apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox openjdk-16-jdk-headless
+    apt install -y systemd software-properties-common lsb-release nano tar curl git htop neofetch shellinabox
     
 # Automatically configure the timezone (based on VPS location)
 RUN echo "tzdata tzdata/Areas select Etc" | debconf-set-selections && \
