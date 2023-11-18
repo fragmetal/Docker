@@ -27,6 +27,6 @@ RUN chmod +x ./start.sh
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Expose the port
-EXPOSE 2333
+EXPOSE 443
 
 CMD ["./start.sh"]
